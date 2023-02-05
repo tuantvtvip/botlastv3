@@ -22,14 +22,14 @@ module.exports.handleReply = async ({ event, api, handleReply, Currencies, getTe
     const { threadID, messageID, senderID } = event;
     let data = (await Currencies.getData(senderID)).data || {};
 //random coins nhận được khi làm việc ít nhất 200
-var coinscn = Math.floor(Math.random() * 100000) + 200; //random coins khi làm ở khu công nghiệp
-var coinsdv = Math.floor(Math.random() * 170000) + 100; //random coins khi làm ở khu dịch vụ
-var coinsmd = Math.floor(Math.random() * 300000) + 400; //random coins khi làm ở mỏ dầu
-var coinsq = Math.floor(Math.random() * 200000) + 90; //random coins khi khai thác quặng
-var coinsdd = Math.floor(Math.random() * 50000) + 500; //random coins khi đào đá
-var coinsdd1 = Math.floor(Math.random() * 400000) + 1000; //random coins khi đào đá
-var coinsex2 = Math.floor(Math.random() * 300000) + 420;
-  var coinsktf = Math.floor(Math.random() * 300000) + 4200;
+var coinscn = Math.floor(Math.random() * 100) + 250; //random coins khi làm ở khu công nghiệp
+var coinsdv = Math.floor(Math.random() * 170) + 150; //random coins khi làm ở khu dịch vụ
+var coinsmd = Math.floor(Math.random() * 300) + 190; //random coins khi làm ở mỏ dầu
+var coinsq = Math.floor(Math.random() * 200) + 200; //random coins khi khai thác quặng
+var coinsdd = Math.floor(Math.random() * 500) + 198; //random coins khi đào đá
+var coinsdd1 = Math.floor(Math.random() * 400) + 210; //random coins khi đào đá
+var coinsex2 = Math.floor(Math.random() * 300) + 240;
+  var coinsktf = Math.floor(Math.random() * 300) + 224;
   ///////------------random thêm việc cần làm.-----------------////////
 var rdcn = ['𝟭 𝗞𝗶𝗹𝗹', '𝟱 𝗞𝗶𝗹𝗹', '𝟯 𝗞𝗶𝗹𝗹', '𝟭𝟵 𝗞𝗶𝗹𝗹', '𝟴𝟭𝟴 𝗞𝗶𝗹𝗹', '𝟯 𝗞𝗶𝗹𝗹', '𝗧𝗼𝗽𝟭 𝗩𝗼̛́𝗶 𝟬 𝗞𝗶𝗹𝗹'];
 var work1 = rdcn[Math.floor(Math.random() * rdcn.length)];   

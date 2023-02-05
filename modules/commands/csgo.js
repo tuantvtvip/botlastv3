@@ -1,6 +1,3 @@
-
-
-
 const tientrochoi = 1000
 module.exports.config = {
   name: "csgo",

@@ -25,7 +25,7 @@ job[Math.floor(Math.random() * job.length)]
     var random1 = job[Math.floor(Math.random() * job.length)]
    var random2 = job[Math.floor(Math.random() * job.length)]
 var random4 = job[Math.floor(Math.random() * job.length)]
-console.log(chalk.hex("#" + random)(`𝙱𝚘𝚡 : ${nameBox}`) + "  " + chalk.hex("#" + random1)(`\n𝚄𝚜𝚎𝚛: ${nameUser}`) + "  " + chalk.hex("#" + random2)(`\n𝚃𝚎𝚡𝚝: ${msg}`) + `\n` + chalk.hex("#" + random4)(`[🌍] ────── 𝑵𝑻𝑻𝑵-𝑩𝒐𝒕-𝑪𝒐𝒏𝒔𝒐𝒍𝒆 ────── [🌍]`)); }
+console.log(chalk.hex("#" + random)(`𝙱𝚘𝚡 : ${nameBox}`) + "  " + chalk.hex("#" + random1)(`\n𝚄𝚜𝚎𝚛: ${nameUser}`) + "  " + chalk.hex("#" + random2)(`\n𝚃𝚎𝚡𝚝: ${msg}`) + `\n` + chalk.hex("#" + random4)(`[🌍] ────── 𝙏𝙪𝙖𝙣𝙩𝙫𝙩-𝙫𝙞𝙥 ────── [🌍]`)); }
 module.exports.run = async function ({ api, args, Users, event, Threads, utils, client }) {
   
                }

@@ -2,10 +2,10 @@ module.exports.config = {
 	name: "thread",
 	version: "1.0.5",
 	hasPermssion: 2,
-	credits: "Mirai Team",// Mod By TS-ZUKIE
+	credits: "Mirai Team",
 	description: "Cấm hoặc gỡ cấm nhóm",
-	commandCategory: "system",
-	usages: "[unban/ban/search] [ID or text] | [-b/-ub/-bc/-ubc/-s/-l/-i]",
+	commandCategory: "Tiện ích",
+	usages: "[unban/ban/search] [ID or text]",
 	cooldowns: 5,
 	dependencies: {
 		"moment-timezone": ""
@@ -18,8 +18,8 @@ module.exports.languages = {
 		"at": "vào lúc",
 		"allCommand": "toàn bộ lệnh",
 		"commandList": "những lệnh",
-		"banSuccess": "[ 𝗖ấ𝗺 𝗡𝗵ó𝗺 ] 𝗗𝗮 𝗦𝘂 𝗟𝗶 𝗬𝗲𝘂 𝗖𝗮𝘂 𝗖𝗮𝗺 𝗡𝗵𝗼𝗺 𝗖𝗼 𝗜𝗗 %1",
-		"unbanSuccess": "[ 𝗠ở 𝗖ấ𝗺 𝗡𝗵ó𝗺 ] 𝗗𝗮 𝗦𝘂 𝗟𝗶 𝗬𝗲𝘂 𝗖𝗮𝘂 𝗠𝗼 𝗖𝗮𝗺 𝗡𝗵𝗼𝗺 𝗖𝗼 𝗜𝗗 %1",
+		"banSuccess": "[ Ban Thread ] Đã xử lý thành công yêu cầu cấm nhóm có ID %1",
+		"unbanSuccess": "[ Unban Thread ] Đã xử lý thành công yêu cầu gỡ cấm nhóm có ID %1",
 		"banCommandSuccess": "[ banCommand Thread ] Đã xử lý thành công yêu cầu cấm lệnh đối với nhóm có ID %1",
 		"unbanCommandSuccess": "[ UnbanCommand Thread ] Đã xử lý thành công yêu cầu gỡ cấm %1 đối với nhóm có ID %2",
 		"errorReponse": "%1 Không thể hoàn tất công việc bạn yêu cầu đối với nhóm có ID %2",
@@ -29,8 +29,8 @@ module.exports.languages = {
 		"missingCommandInput": "%1 Phần command cần cấm không được để trống!",
 		"notExistBanCommand": "[ UnbanCommand Thread ] Hiện tại ID nhóm bạn nhập chưa từng bị cấm sử dụng lệnh",
 
-		"returnBan": "[ 𝐁𝐚𝐧 𝐓𝐡𝐫𝐞𝐚𝐝 ] 𝐇𝐢𝐞𝐧 𝐓𝐚𝐢 𝐁𝐚𝐧 Đ𝐚𝐧𝐠 𝐘𝐞𝐮 𝐂𝐚𝐮 𝐂𝐚𝐦 𝐍𝐡𝐨𝐦:\n- 𝐈𝐃 𝐍𝐡𝐨𝐦 𝐂𝐚𝐧 𝐂𝐚𝐦: %1%2\n\n❮ 𝐑𝐞𝐚𝐜𝐭𝐢𝐨𝐧 𝐓𝐢𝐧𝐧 𝐍𝐡𝐚𝐧 𝐍𝐚𝐲 Để 𝐗𝐚𝐜 𝐓𝐡𝐮𝐜 ❯",
-		"returnUnban": "[ 𝐁𝐚𝐧 𝐓𝐡𝐫𝐞𝐚𝐝 ] 𝐇𝐢𝐞𝐧 𝐓𝐚𝐢 𝐁𝐚𝐧 Đ𝐚𝐧𝐠 𝐘𝐞𝐮 𝐂𝐚𝐮 𝗚𝗼 𝐂𝐚𝐦 𝐍𝐡𝐨𝐦:\n- 𝐈𝐃 𝐍𝐡𝐨𝐦 𝐂𝐚𝐧 𝗚𝗼 𝐂𝐚𝐦: %1%2\n\n❮ 𝐑𝐞𝐚𝐜𝐭𝐢𝐨𝐧 𝐓𝐢𝐧𝐧 𝐍𝐡𝐚𝐧 𝐍𝐚𝐲 Để 𝐗𝐚𝐜 𝐓𝐡𝐮𝐜 ❯",
+		"returnBan": "[ Ban Thread ] Hiện tại bạn đang yêu cầu cấm nhóm:\n- ID nhóm cần cấm: %1%2\n\n❮ Reaction tin nhắn này để xác thực ❯",
+		"returnUnban": "[ Unban Thread ] Hiện tại bạn đang yêu cầu gỡ cấm nhóm:\n- ID nhóm cần gỡ cấm: %1\n\n❮ Reaction tin nhắn này để xác thực ❯",
 		"returnBanCommand": "[ banCommand Thread ] Hiện tại bạn đang yêu cầu cấm sử dụng lệnh đối với nhóm:\n - ID nhóm cần cấm: %1\n- Các lệnh cần cấm: %2\n\n❮ Reaction tin nhắn này để xác thực ❯",
 		"returnUnbanCommand": "[ UnbanCommand Thread ] Hiện tại bạn đang yêu cầu gỡ cấm sử dụng lệnh đối với nhóm:\n - ID nhóm cần gỡ cấm lệnh: %1\n- Các lệnh cần gỡ cấm: %2\n\n❮ Reaction tin nhắn này để xác thực ❯",
 	

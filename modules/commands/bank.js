@@ -1,87 +1,186 @@
+/**
+ * @author MintDaL
+ * @warn Do not edit code or edit credits
+ */
+
 module.exports.config = {
-        name: "bank",
-        version: "0.0.1",
-        hasPermssion: 0,
-        credits: "D-Jukie-keychinhle",
-        description: "",
-        commandCategory: "Kiếm Tiền",
-        usages: "",
-        cooldowns: 0,
-dependencies: {
-         "fs-extra": "",
-      "request": "",
-      "axios": ""
-}  
+    name: "bank",
+    version: "2.0.5",
+    hasPermssion: 0,
+    credits: "MintDaL",
+    description: "Ngân hàng Bot",
+    commandCategory: "game",
+    usages: "",
+    cooldowns: 5
 };
-module.exports.onLoad = async () => {
-	const { existsSync, writeFileSync, mkdirSync } = require("fs-extra")
-	const { join } = require("path")
-	const axios = require("axios");
-	const dir = __dirname + `/banking`;
-	if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
-    const pathData = join(__dirname + '/banking/banking.json');
-    if (!existsSync(pathData)) return writeFileSync(pathData, "[]", "utf-8"); 
-	return;
-}
-module.exports.run = async function({ api, event, args, models, Users, Threads, Currencies, permssion }) {
-  const { threadID, messageID, senderID } = event;
-  const axios = require("axios")
-   
-  const { readFileSync, writeFileSync } = require("fs-extra")
-  const { join } = require("path")
-  const pathData = join(__dirname + '/banking/banking.json');
-  const user = require('./banking/banking.json');
-  const timeIM = 60*60
-  const laisuat = 2
-  const moneyInput = parseInt(args[1])
-  if(args[0] == '-r' || args[0] == 'register') {
-    if (!user.find(i => i.senderID == senderID)) {
-      var add = { senderID: senderID,  money: 0 }
-      user.push(add);
-      writeFileSync(pathData, JSON.stringify(user, null, 2));
-      return api.sendMessage(`[ 𝐍𝐆𝐀̂𝐍 𝐇𝐀̀𝐍𝐆 ] » 𝗕𝗮̣𝗻 𝘃𝘂̛̀𝗮 𝘁𝗮̣𝗼 𝘁𝗵𝗲̉ 𝘁𝗵𝗮̀𝗻𝗵 𝗰𝗼̂𝗻𝗴, 𝗴𝘂̛̉𝗶 𝗶́𝘁 𝗻𝗵𝗮̂́𝘁 𝟮𝟬𝟬 𝗩𝗡𝗗 𝗻𝗲̂́𝘂 𝗺𝘂𝗼̂́𝗻 𝗰𝗼́ 𝗹𝗮̃𝗶 💰`, threadID, messageID)
-    }
-  else return api.sendMessage(`[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » 𝗕𝗮̣𝗻 𝗵𝗶𝗲̣̂𝗻 𝗰𝗼́ 𝘁𝗮̀𝗶 𝗸𝗵𝗼𝗮̉𝗻 𝘁𝗿𝗲̂𝗻 𝗵𝗲̣̂ 𝘁𝗵𝗼̂́𝗻𝗴 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸 𝗿𝗼̂̀𝗶 🏦`, threadID, messageID)
-  }
-  if(args[0] == 'check' || args[0] == 'coins') {
-  if (!user.find(i => i.senderID == senderID)) return api.sendMessage('[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴 𝗰𝗵𝘂̛𝗮 𝘁𝗮̣𝗼 𝘁𝗵𝗲̉ 𝘀𝘂̛̉ 𝗱𝘂̣𝗻𝗴 𝗻𝗴𝗮̂𝗻, /𝗯𝗮𝗻𝗸 -𝗿 𝗻𝗲̂́𝘂 𝗺𝘂𝗼̂́𝗻 𝘁𝗮̣𝗼 😽', threadID, messageID)
-    else { 
-      var userData = user.find(i => i.senderID == senderID);
-      return api.sendMessage(`[ 𝐍𝐆𝐀̂𝐍 𝐇𝐀̀𝐍𝐆 ] » 𝗦𝗼̂́ 𝘁𝗶𝗲̂̀𝗻 𝗵𝗶𝗲̣̂𝗻 𝘁𝗮̣𝗶 𝗯𝗮̣𝗻 𝗴𝘂̛̉𝗶 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸 𝗹𝗮̀: ${userData.money}$\n💷 𝗟𝗮̃𝗶: +${laisuat}% 𝘁𝗿𝗼𝗻𝗴 ${timeIM/60} 𝗽𝗵𝘂́𝘁`, threadID, messageID)
-    }
-  } 
-  if(args[0] == 'gửi' || args[0] == 'send') {
-  if (!args[1] || isNaN(args[1]) || parseInt(args[1]) < 50) return api.sendMessage("[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » 𝗦𝗼̂́ 𝘁𝗶𝗲̂̀𝗻 𝗰𝗮̂̀𝗻 𝗴𝘂̛̉𝗶 𝗽𝗵𝗮̉𝗶 𝗹𝗮̀ 𝟭 𝗰𝗼𝗻 𝘀𝗼̂́ 𝘃𝗮̀ 𝗹𝗼̛́𝗻 𝗵𝗼̛𝗻 𝟱𝟬 𝗩𝗡𝗗 💰", threadID, messageID);
-  if (!user.find(i => i.senderID == senderID)) {
-    return api.sendMessage('[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴 𝗰𝗵𝘂̛𝗮 𝘁𝗮̣𝗼 𝘁𝗵𝗲̉ 𝘀𝘂̛̉ 𝗱𝘂̣𝗻𝗴 𝗻𝗴𝗮̂𝗻, /𝗯𝗮𝗻𝗸 -𝗿 𝗻𝗲̂́𝘂 𝗺𝘂𝗼̂́𝗻 𝘁𝗮̣𝗼 😽', threadID, messageID)
-  }
-  else { 
-      let balance = (await Currencies.getData(senderID)).money;
-      if(balance < moneyInput) return api.sendMessage(`[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » Số dư không đủ ${moneyInput} để gửi vào Mirai Bank💰 `, threadID, messageID)
-      var userData = user.find(i => i.senderID == senderID);
-      var money = userData.money;
-      userData.money = parseInt(money) + parseInt(moneyInput)
-      writeFileSync(pathData, JSON.stringify(user, null, 2));
-      await Currencies.decreaseMoney(senderID, parseInt(moneyInput));
-      return api.sendMessage(`[ 𝐍𝐆𝐀̂𝐍 𝐇𝐀̀𝐍𝐆 ] » 𝗕𝗮̣𝗻 𝘃𝘂̛̀𝗮 𝗴𝘂̛̉𝗶 ${moneyInput}$ 𝘃𝗮̀𝗼 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸\n💷 𝗟𝗮̃𝗶: +${laisuat}% 𝘁𝗿𝗼𝗻𝗴 ${timeIM/60} 𝗽𝗵𝘂́𝘁`, threadID, messageID)
-    }
-  }
-  if(args[0] == 'rút' || args[0] == 'lấy') { 
-    if (!args[1] || isNaN(args[1]) || parseInt(args[1]) < 50) return api.sendMessage("[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » 𝗦𝗼̂́ 𝘁𝗶𝗲̂̀𝗻 𝗰𝗮̂̀𝗻 𝗴𝘂̛̉𝗶 𝗽𝗵𝗮̉𝗶 𝗹𝗮̀ 𝟭 𝗰𝗼𝗻 𝘀𝗼̂́ 𝘃𝗮̀ 𝗹𝗼̛́𝗻 𝗵𝗼̛𝗻 𝟱𝟬 𝗩𝗡𝗗 💰", threadID, messageID);
-    if (!user.find(i => i.senderID == senderID)) {
-      return api.sendMessage('[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴 𝗰𝗵𝘂̛𝗮 𝘁𝗮̣𝗼 𝘁𝗵𝗲̉ 𝘀𝘂̛̉ 𝗱𝘂̣𝗻𝗴 𝗻𝗴𝗮̂𝗻, /𝗯𝗮𝗻𝗸 -𝗿 𝗻𝗲̂́𝘂 𝗺𝘂𝗼̂́𝗻 𝘁𝗮̣𝗼 😽', threadID, messageID)
-    }
-  else {  
-    var userData = user.find(i => i.senderID == senderID); 
-    var money = userData.money;
-    if(parseInt(money) < parseInt(moneyInput)) return api.sendMessage('[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » Số dư của bạn không đủ để thực hiện giao dịch này!', threadID, messageID)
-      else {
-        await await Currencies.increaseMoney(senderID, parseInt(moneyInput));
-        userData.money = parseInt(money) - parseInt(moneyInput)
-        writeFileSync(pathData, JSON.stringify(user, null, 2));
-        return api.sendMessage(`[ 𝐍𝐆𝐀̂𝐍 𝐇𝐀̀𝐍𝐆 ] » 𝗥𝘂́𝘁 𝘁𝗵𝗮̀𝗻𝗵 𝗰𝗼̂𝗻𝗴 ${parseInt(moneyInput)}$, 𝘀𝗼̂́ 𝗱𝘂̛ 𝗰𝗼̀𝗻 𝗹𝗮̣𝗶 𝗹𝗮̀ ${userData.money}$`, threadID, messageID)
+
+
+module.exports.run = async function ({ api, event, args, Currencies, Users }) {
+    const { senderID, messageID, threadID } = event;
+    const axios = require('axios');
+  if (!args[0]) return api.sendMessage(`=== 「 BANK MIRAI 」 ===\nSau đây là cách sử dụng: \n\n»bank register: để đăng kí \n»bank info: để xem thông tin tài khoản bản thân\n»bank find: để tìm tài khoản ngân hàng \n»bank get: để rút tiền \n»bank pay: để chuyển tiền \n»bank send: nạp tiền vào tài khoản \n»bank pw: lấy lại pass hoặc đổi password tài khoản ngân hàng của bạn`, event.threadID);
+    const checkBank = (await axios.get(`https://api.mintdal.repl.co/bank/check?ID=${senderID}`)).data  
+    const { createReadStream } = require(`fs-extra`);
+    switch(args[0]) {
+        case 'register':
+        case '-r':
+        case 'r': {
+            const res = (await axios.get(`https://api.mintdal.repl.co/bank/register?senderID=${senderID}&name=${encodeURI((await Users.getData(senderID)).name)}`)).data
+            if(res.status == false) return api.sendMessage(res.message, threadID, messageID);
+            api.sendMessage('Mật khẩu MDL Bank của bạn là: ' + res.message.password, senderID);
+            return api.sendMessage(`=== [ ${res.message.noti} ] ===\n👤 Chủ sở hữu: ${res.message.name}\n💳 STK: ${res.message.STK}\n💰 Số dư: ${res.message.money}$\n🔐  Password: đã được gửi đến inbox (nếu không nhận được vui lòng addfr bot và đặt lại mật khẩu)`, threadID, messageID)
+        }
+         case "find":
+        case "-f": {
+            if (checkBank.status == false) api.sendMessage("Bạn chưa có tài khoản trên hệ thống!", threadID, messageID)
+            if (args[1] != "stk" && args[1] != "id") {
+                api.sendMessage("Vui lòng chọn đúng kiểu dữ kiện (stk/id)", threadID, messageID)
+            }
+            let { data } = (await axios.get(`https://api.mintdal.repl.co/bank/find?type=${args[1].toUpperCase()}&${args[1].toUpperCase()}=${args[2]}`))
+            const name = data.message.name
+            const stk = data.message.data.STK
+            const soDu = data.message.data.money
+            return api.sendMessage(`=== [ MDL BANK ] ===\n👤 Chủ sở hữu: ${name}\n💳 STK: ${stk}\n💰 Số dư: ${soDu}$`, threadID, messageID)
+        }
+      case 'info':
+      case '-i':
+      case 'check':
+      case '-c': {
+        var a = event.senderID;
+        if(checkBank.status == false) return api.sendMessage('Bạn chưa có tài khoản MDL Bank!', threadID, messageID);
+        const res = (await axios.get(`https://api.mintdal.repl.co/bank/find?type=ID&ID=${a}`)).data  
+          return api.sendMessage(`=== [ MDL BANK ] ===\n👤 Chủ sỡ hữu: ${res.message.name}\n💳 STK: ${res.message.data.STK}\n💰 Số dư: ${res.message.data.money}$`, threadID, messageID)
       }
+        case 'get':
+        case 'rút': {
+            if(checkBank.status == false) return api.sendMessage('Bạn chưa có tài khoản MDL Bank!', threadID, messageID);
+            if(!args[1]) return api.sendMessage('Vui lòng nhập: get [số tiền]', threadID, messageID);
+            api.sendMessage('Hoàn tất bước cuối cùng ở tin nhắn chờ', threadID, messageID);
+            return api.sendMessage('Vui lòng reply tin nhắn này và nhập mật khẩu MDL Bank để rút tiền!', senderID, (error, info) => 
+                global.client.handleReply.push({
+                    name: this.config.name,
+                    type: 'getMoney',
+                    messageID: info.messageID,
+                    author: event.senderID,
+                    money: args[1],
+                    threadID: threadID
+                })
+            );
+        }
+        case 'pay':
+        case '-p': {
+            if(checkBank.status == false) return api.sendMessage('Bạn chưa có tài khoản MDL Bank!', threadID, messageID);
+            if(!args[1] || !args[2] || !args[3]) return api.sendMessage('Vui lòng nhập đúng kiểu dữ liệu: pay stk [stk người nhận] [số tiền]', threadID, messageID);
+            if(args[1] == 'stk') {
+                api.sendMessage('Hoàn tất bước cuối cùng ở tin nhắn chờ', threadID, messageID);
+                return api.sendMessage('Vui lòng reply tin nhắn này và nhập mật khẩu MDL Bank để chuyển tiền!', senderID, (error, info) => 
+                    global.client.handleReply.push({
+                        name: this.config.name,
+                        type: 'paySTK',
+                        messageID: info.messageID,
+                        author: event.senderID,
+                        STK: args[2],
+                        money: args[3],
+                        threadID: threadID
+                    })
+                );
+            }
+            if(args[1] == 'id') {
+                if(checkBank.status == false) return api.sendMessage('Bạn chưa có tài khoản MDL Bank!', threadID, messageID);
+                api.sendMessage('Hoàn tất bước cuối cùng ở tin nhắn chờ', threadID, messageID);
+                return api.sendMessage('Vui lòng reply tin nhắn này và nhập mật khẩu MDL Bank để chuyển tiền!', senderID, (error, info) => 
+                    global.client.handleReply.push({
+                        name: this.config.name,
+                        type: 'payID',
+                        messageID: info.messageID,
+                        author: event.senderID,
+                        ID: args[2],
+                        money: args[3],
+                        threadID: threadID
+                    })
+                );
+            }
+            break;
+        }
+        case 'send':
+        case 'nạp': {
+            if(checkBank.status == false) return api.sendMessage('Bạn chưa có tài khoản MDL Bank!', threadID, messageID);
+            if(!args[1]) return api.sendMessage('Vui lòng nhập số tiền cần nạp vào!\nsend [số tiền cần nạp]', threadID, messageID);
+            var check = await checkMoney(senderID, args[1])
+            if (check == false) return api.sendMessage('Hmm, tiền đâu mà nạp vô đây?', threadID, messageID);
+            await Currencies.decreaseMoney(senderID, parseInt(args[1]))
+            const res = (await axios.get(`https://api.mintdal.repl.co/bank/send?senderID=${senderID}&money=${args[1]}`)).data  
+            return api.sendMessage(`${res.message.noti} Số dư hiện tại của bạn trong MDL Bank: ${res.message.money}$`, threadID, messageID)
+            break;
     }
+        case 'password':
+        case 'pw': {
+            if(checkBank.status == false) return api.sendMessage('Bạn chưa có tài khoản MDL Bank!', threadID, messageID);
+            var type = args[1];
+            switch(type) {
+                case 'get': {
+                    const res = (await axios.get(`https://api.mintdal.repl.co/bank/password?bka=${type}&dka=${senderID}`)).data 
+                    api.sendMessage('Mật khẩu của bạn được gửi đến tin nhắn chờ', threadID, messageID);
+                    return api.sendMessage(`Mật khẩu của bạn là: ${res.message.password}`, senderID);
+                }
+                case 'recovery':
+                case 'new': {
+                    api.sendMessage('Hoàn tất bước cuối cùng ở tin nhắn chờ', threadID, messageID);
+                    return api.sendMessage('Vui lòng reply tin nhắn này để nhập mật khẩu mới!', senderID, (error, info) => 
+                        global.client.handleReply.push({
+                            name: this.config.name,
+                            type: 'newPassword',
+                            messageID: info.messageID,
+                            author: event.senderID,
+                            threadID: threadID
+                        })
+                    );
+                }
+                default: {
+                    return api.sendMessage("Vui lòng sử dụng get (để lấy mật khẩu) hoặc new (để nhập mật khẩu mới)", threadID, messageID);
+                }
+            }
+        }
+        default: {
+        return api.sendMessage({body:"=== 「 MDL BANK 」 === Đây là ngân hàng Bot được điều hành bởi MintDaL. Sau đây là cách sử dụng: \n\n» register: để đăng kí \n» info: để xem thông tin tài khoản bản thân\n» find: để tìm tài khoản ngân hàng \n» get: để rút tiền \n» pay: để chuyển tiền \n» send: nạp tiền vào tài khoản \n» pw: lấy lại pass hoặc đổi password tài khoản ngân hàng của bạn", attachment: createReadStream(__dirname + `/cache/bank.png`)}, threadID, messageID);
+        }
+    }
+async function checkMoney(senderID, maxMoney) {
+    var i, w;
+    i = (await Currencies.getData(senderID)) || {};
+    w = i.money || 0
+    if (w < parseInt(maxMoney)) return false;
+    else return true;
   }
-  else return api.sendMessage(`======🏦 𝐌𝐢𝐫𝐚𝐢 𝐁𝐚𝐧𝐤 🏦======\n\n[-𝐫/𝐫𝐞𝐠𝐢𝐬𝐭𝐞𝐫] - 𝗧𝗮̣𝗼 𝘁𝗵𝗲̉ 𝗴𝘂̛̉𝗶 𝘁𝗶𝗲̂̀𝗻 𝘁𝗮̣𝗶 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸 💹\n[𝐜𝐡𝐞𝐜𝐤/𝐜𝐨𝐢𝐧𝐬] - 𝗫𝗲𝗺 𝘀𝗼̂́ 𝘁𝗶𝗲̂̀𝗻 𝗵𝗶𝗲̣̂𝗻 𝘁𝗿𝗼𝗻𝗴 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸 💳\n[𝐠𝐮̛̉𝐢/𝐬𝐞𝐧𝐝] - 𝗚𝘂̛̉𝗶 𝘁𝗶𝗲̂̀𝗻 𝘃𝗮̀𝗼 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸 💷\n[𝐫𝐮́𝐭] - 𝗥𝘂́𝘁 𝘁𝗶𝗲̂̀𝗻 𝘁𝘂̛̀ 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸💰\n\n💲 𝗟𝗮̃𝗶 𝘀𝘂𝗮̂́𝘁 𝗵𝗶𝗲̣̂𝗻 𝘁𝗮̣𝗶: +${laisuat}% 𝘁𝗿𝗼𝗻𝗴 ${timeIM/60} 𝗽𝗵𝘂́𝘁`, threadID, messageID)
+}
+module.exports.handleReply = async function ({ api, event, handleReply, Currencies }) {
+    const axios = require('axios')
+    const { senderID, messageID, threadID , body } = event;
+    switch(handleReply.type) {
+        case 'paySTK': {
+            const res = (await axios.get(`https://api.mintdal.repl.co/bank/pay?type=STK&senderID=${senderID}&STK=${handleReply.STK}&money=${handleReply.money}&password=${body}`)).data 
+            if(res.status == false) return api.sendMessage(res.message, threadID, messageID);
+            api.sendMessage(`${res.message.noti} ${res.message.data.message}`, threadID, messageID);
+            return api.sendMessage(`${res.message.noti}\n\n${res.message.data.message}`, handleReply.threadID);
+        }
+        case 'payID': {
+            const res = (await axios.get(`https://api.mintdal.repl.co/bank/pay?type=ID&senderID=${senderID}&userID=${handleReply.ID}&money=${handleReply.money}&password=${body}`)).data 
+            if(res.status == false) return api.sendMessage(res.message, threadID, messageID);
+            api.sendMessage(`${res.message.noti} ${res.message.data.message}`, threadID, messageID);
+            return api.sendMessage(`${res.message.noti}\n\n${res.message.data.message}`, handleReply.threadID);
+        }
+        case 'getMoney': {
+            const res = (await axios.get(`https://api.mintdal.repl.co/bank/get?ID=${senderID}&money=${handleReply.money}&password=${body}`)).data  
+            if(res.status == false) return api.sendMessage(res.message, threadID, messageID);
+            await Currencies.increaseMoney(senderID, parseInt(handleReply.money))
+            api.sendMessage(`${res.message.noti}\n👤 Chủ tài khoản: ${res.message.name}\n💰 Số dư còn lại: ${res.message.money}`, threadID, messageID);
+            return api.sendMessage(`${res.message.noti}\n👤 Chủ tài khoản: ${res.message.name}\n💰 Số dư còn lại: ${res.message.money}`, handleReply.threadID);
+        }
+        case 'newPassword': {
+            const res = (await axios.get(`https://api.mintdal.repl.co/bank/password?bka=recovery&dka=${senderID}&fka=${body}`)).data  
+            if(res.status == false) return api.sendMessage(res.message, threadID, messageID);
+            api.sendMessage(`${res.message.noti}\nChủ tài khoản: ${res.message.name}`, handleReply.threadID);
+            return api.sendMessage(`Thay đổi mật khẩu thành công!\nMật khẩu hiện tại: ${res.message.password}`, threadID, messageID)
+        }
+    }
 }

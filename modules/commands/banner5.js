@@ -6,7 +6,7 @@ module.exports.config = {
     name: "banner5",
     version: "1.0.0",
     hasPermssion: 0,
-    credits: "Hanaku UwuU",
+    credits: "fix tuantvt",
     description: "banner",
     commandCategory: "𝐓𝐚̣𝐨 𝐀̉𝐧𝐡",
     usages: "",
@@ -49,7 +49,7 @@ module.exports.handleReply = async function({ api, event, handleReply }) {
             return api.sendMessage(`Bạn chọn tên phụ ${event.body}, hãy reply tin nhắn này để nhập tên facebook`, event.threadID, (err, info) => {
                 global.client.handleReply.push({
                     step: 4,
-                    name: "bannau8",
+                    name: "banner8",
                     author: event.senderID,
                     idchart: handleReply.idchart,
                     tenchinh: handleReply.tenchinh,
