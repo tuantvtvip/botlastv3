@@ -37,8 +37,6 @@
         "eval": "^0.1.8",
         "extract-zip": "^2.0.1",
         "fast-speedtest-api": "^0.3.2",
-        "fca-disme": "^3.0.7",
-        "fca-horizon-remake": "^5.5.1",
         "figlet": "^1.5.2",
         "fluent-ffmpeg": "^2.1.2",
         "fs": "0.0.1-security",
