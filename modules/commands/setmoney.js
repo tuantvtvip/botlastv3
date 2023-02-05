@@ -60,4 +60,4 @@ var mention = Object.keys(event.mentions)[0];
 else {
 	api.sendMessage("sai cú pháp", event.threadID, event.messageID)
 	}
-  }
+                      } 
