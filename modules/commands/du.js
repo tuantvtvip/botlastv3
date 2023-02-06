@@ -3,7 +3,7 @@
 * @warn Vui lòng không sửa credits cảm ơn !
 */
 module.exports.config = {
-  name: "dú",
+  name: "dú2",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "CallmeSun",
