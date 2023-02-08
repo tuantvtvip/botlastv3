@@ -16,16 +16,14 @@ module.exports.config = {
         var { threadID, messageID, senderID } = event;
         var tag = (await Users.getData(senderID)).name;
         let output = "ad của bot đz ";
-        let varinput = [ "bot", "Bot","ê bot","Ê bot" ];
+        let varinput = [ "tuan","tuantvt","tuanvip","tuandz" ];
         let varinput1 = [ "bot dz", "Bot dz", "bot vip" ,"bot xinh" ,"bot pro"];
         for (const input of varinput) {
             if (event.body.indexOf(input)==0 && event.body.length == input.length) {
-            var job = ['Bot cute xinh gái đây cậu chủ,cô chủ',
-            'dạa',  
-            'bot đây ạ',
-            'donate đi rồi nói tiếp',
-            'gọi vừa thôi',
-            'bot đang bận'];
+            var job = ['Vui lòng nhắn riêng với ad của bot https://www.facebook.com/tuantvtvip',
+            'ad tôi đang bận bạn có thể dùng callad',  
+            'yêu hay sao mà gọi thế',
+            'ad đang đợi bạn nhắn riếng'];
                  api.sendMessage(job[Math.floor(Math.random() * job.length)] + ' '  , threadID, messageID);
             }
         }

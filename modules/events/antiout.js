@@ -1,28 +1,22 @@
 module.exports.config = {
- name: "antiout",
- eventType: ["log:unsubscribe"],
- version: "0.0.1",
- credits: "DungUwU",
- description: "Listen events"
-};
-
-module.exports.run = async({ event, api, Threads, Users }) => {
-   const moment = require("moment-timezone");
-  var timeNow = moment.tz("Asia/Ho_Chi_Minh").format("HH:mm:ss")
- let data = (await Threads.getData(event.threadID)).data || {};
- if (data.antiout == false) return;
- if (event.logMessageData.leftParticipantFbId == api.getCurrentUserID()) return;
- const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
- const type = (event.author == event.logMessageData.leftParticipantFbId) ? "tự rời" : "bị quản trị viên đá";
- if (type == "tự rời") {
-  api.addUserToGroup(event.logMessageData.leftParticipantFbId, event.threadID, (error, info) => {
-   if (error) {
-    api.sendMessage(`━━━━『 𝐓𝐢𝐧 𝐍𝐡𝐚̆́𝐧 𝐇𝐞̣̂ 𝐓𝐡𝐨̂́𝐧𝐠 』━━━━\n『 𝐊𝐢́𝐜𝐡 𝐇𝐨𝐚̣𝐭  』     ➣ 𝐂𝐡𝐨̂́𝐧𝐠 𝐓𝐡𝐚̀𝐧𝐡 𝐕𝐢𝐞̂𝐧 𝐑𝐨̛̀𝐢 𝐁𝐨𝐱\n『 𝐓𝐢̀𝐧𝐡 𝐓𝐫𝐚̣𝐧𝐠  』   ➣ 𝐓𝐡𝐞̂𝐦 𝐓𝐡𝐚̂́𝐭 𝐁𝐚̣𝐢 𝐓𝐡𝐚̀𝐧𝐡 𝐕𝐢𝐞̂𝐧 𝐕𝐚̀𝐨 𝐁𝐨𝐱\n『    𝐔𝐬𝐞𝐫 𝐑𝐨̛̀𝐢    』   ➣  ${name}\n『   𝐓𝐡𝐨̛̀𝐢 𝐆𝐢𝐚𝐧   』   ➣  ${timeNow}`, event.threadID)
-   } else api.sendMessage(`━━━━『 𝐓𝐢𝐧 𝐍𝐡𝐚̆́𝐧 𝐇𝐞̣̂ 𝐓𝐡𝐨̂́𝐧𝐠 』━━━━
-『 𝐊𝐢́𝐜𝐡 𝐇𝐨𝐚̣𝐭  』     ➣ 𝐂𝐡𝐨̂́𝐧𝐠 𝐓𝐡𝐚̀𝐧𝐡 𝐕𝐢𝐞̂𝐧 𝐑𝐨̛̀𝐢 𝐁𝐨𝐱
-『 𝐓𝐢̀𝐧𝐡 𝐓𝐫𝐚̣𝐧𝐠  』   ➣ 𝐓𝐡𝐞̂𝐦 𝐓𝐡𝐚̀𝐧𝐡 𝐂𝐨̂𝐧𝐠 𝐓𝐡𝐚̀𝐧𝐡 𝐕𝐢𝐞̂𝐧 𝐕𝐚̀𝐨 𝐁𝐨𝐱
-『    𝐔𝐬𝐞𝐫 𝐑𝐨̛̀𝐢    』   ➣  ${name}
-『   𝐓𝐡𝐨̛̀𝐢 𝐆𝐢𝐚𝐧   』   ➣  ${timeNow}`, event.threadID);
-  })
- }
-                                       }
+   name: "antiout",
+   eventType: ["log:unsubscribe"],
+   version: "0.0.1",
+   credits: "DungUwU",
+   description: "Listen events"
+  };
+  
+  module.exports.run = async({ event, api, Threads, Users }) => {
+   let data = (await Threads.getData(event.threadID)).data || {};
+   if (data.antiout == false) return;
+   if (event.logMessageData.leftParticipantFbId == api.getCurrentUserID()) return;
+   const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
+   const type = (event.author == event.logMessageData.leftParticipantFbId) ? "𝐭𝐮̛̣ 𝐫𝐨̛̀𝐢" : "𝐛𝐢̣ 𝐐𝐓𝐕 𝐥𝐨̣𝐜/𝐤𝐢𝐜𝐤";
+   if (type == "𝐭𝐮̛̣ 𝐫𝐨̛̀𝐢") {
+    api.addUserToGroup(event.logMessageData.leftParticipantFbId, event.threadID, (error, info) => {
+     if (error) {
+      api.sendMessage(`𝐭𝐢𝐞̂́𝐜 𝐪𝐮𝐚́ 𝐛𝐨𝐭 𝐤𝐡𝐨̂𝐧𝐠 𝐭𝐡𝐞̂𝐦 ${name} 𝐯𝐨̂ 𝐥𝐚̣𝐢 đ𝐮̛𝐨̛̣𝐜 𝐫𝐨̂̀𝐢😿`, event.threadID)
+     } else api.sendMessage(`${name} 𝐨𝐮𝐭 đ𝐢 đ𝐚̂𝐮 đ𝐚̂́𝐲, 𝐭𝐡𝐢́𝐜𝐡 𝐨𝐮𝐭 𝐜𝐡𝐮̀𝐚 𝐤𝐡𝐨̂𝐧𝐠?,đ𝐚𝐧𝐠 𝐛𝐚̣̂𝐭 𝐚𝐧𝐭𝐢𝐨𝐮𝐭 𝐦𝐚̀ 𝐞 𝐥𝐦𝐚𝐨 𝐥𝐦𝐚𝐨🤨`, event.threadID);
+    })
+   }
+  }

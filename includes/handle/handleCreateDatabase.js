@@ -11,12 +11,9 @@ module.exports = function ({ Users, Threads, Currencies }) {
             if (!allThreadID.includes(threadID) && event.isGroup == !![]) {
                 const threadIn4 = await Threads.getInfo(threadID);
                 const setting = {};
-
                 setting.threadName = threadIn4.threadName
                 setting.adminIDs = threadIn4.adminIDs
-                setting.participantIDs = threadIn4.participantIDs
-                setting.isGroup = threadIn4.isGroup
-
+                setting.nicknames = threadIn4.nicknames;
                 const dataThread = setting;
                 allThreadID.push(threadID)
                 threadInfo.set(threadID, dataThread);
@@ -24,34 +21,28 @@ module.exports = function ({ Users, Threads, Currencies }) {
                 setting2.threadInfo = dataThread
                 setting2.data = {}
                 await Threads.setData(threadID, setting2);
-                const dataUser = global.data.allUserID
                 for (singleData of threadIn4.userInfo) {
-                    if(singleData.gender != undefined) {
-                        var gender = singleData.gender
-                        userName.set(String(singleData.id), singleData.name);
-                        try {
-                            dataUser.includes(String(singleData.id)) ? (await Users.setData(String(singleData.id), {
-                                'name': singleData.name,
-                            }), 
-                            dataUser.push(singleData.id)) : (await Users.createData(singleData.id, 
-                            {
-                                'name': singleData.name,
-                                'gender': gender,
-                                'data': {}
-                            }), 
-                            dataUser.push(String(singleData.id)), 
-                            logger(global.getText('handleCreateDatabase', 'newUser', singleData.id), '[ DATABASE ]'));
-                        } catch(e) { console.log(e) };
-                    }
+                    userName.set(String(singleData.id), singleData.name);
+                    try {
+                        global.data.allUserID.includes(String(singleData.id)) ? (await Users.setData(String(singleData.id), 
+                        {
+                            'name': singleData.name
+                        }), 
+                        global.data.allUserID.push(singleData.id)) : (await Users.createData(singleData.id, 
+                        {
+                            'name': singleData.name,
+                            'data': {}
+                        }), 
+                        global.data.allUserID.push(String(singleData.id)), 
+                        logger(global.getText('handleCreateDatabase', 'newUser', singleData.id), '[ DATABASE ]'));
+                    } catch(e) { console.log(e) };
                 }
                 logger(global.getText('handleCreateDatabase', 'newThread', threadID), '[ DATABASE ]');
             }
             if (!allUserID.includes(senderID) || !userName.has(senderID)) {
-                const infoUsers = await Users.getInfo(senderID)
-                var gender = infoUsers.gender
-                var setting3 = {};
+                const infoUsers = await Users.getInfo(senderID),
+                    setting3 = {};
                 setting3.name = infoUsers.name
-                setting3.gender = gender
                 await Users.createData(senderID, setting3)
                 allUserID.push(senderID) 
                 userName.set(senderID, infoUsers.name)

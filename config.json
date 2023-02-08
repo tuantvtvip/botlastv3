@@ -9,7 +9,7 @@
     },
     "keyActive": "tuantvt",
     "NOTIFICATION": true,
-    "allowInbox": false,
+    "allowInbox": true,
     "autoClean": true,
     "adminOnly": false,
     "encryptSt": true,
